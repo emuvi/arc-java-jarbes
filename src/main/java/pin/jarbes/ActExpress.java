@@ -1,0 +1,22 @@
+package pin.jarbes;
+
+import pin.jarbox.Source;
+import pin.jarbox.Variables;
+
+public class ActExpress extends Act {
+
+  private static final long serialVersionUID = -940056905325085818L;
+
+  public Source expression;
+
+  @Override
+  public String execute(Variables variables) throws Exception {
+    Object evaluated = variables.evaluate(expression.value);
+    if (evaluated instanceof String result) {
+      return result;
+    } else {
+      return "<next>";
+    }
+  }
+
+}
