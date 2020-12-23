@@ -1,7 +1,7 @@
+jre/
+dist/
 build/
 target/
-dist/
-jre/
 .settings/
 .classpath
 .project
