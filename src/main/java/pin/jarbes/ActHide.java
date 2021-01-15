@@ -18,8 +18,9 @@ public class ActHide extends Act {
         hidden.add(window);
       }
     }
-    if (variables.get("<hidden>") instanceof ListWindow oldHidden) {
-      hidden.addAll(oldHidden);
+    var oldHidden = variables.get("<hidden>");
+    if (oldHidden instanceof ListWindow) {
+      hidden.addAll((ListWindow) oldHidden);
     }
     variables.set("<hidden>", hidden);
     return "<next>";

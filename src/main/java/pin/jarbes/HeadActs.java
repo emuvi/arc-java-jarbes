@@ -61,8 +61,8 @@ public class HeadActs {
     try (ObjectInputStream ois =
         new ObjectInputStream(new FileInputStream(fromFile))) {
       Object read = ois.readObject();
-      if (read instanceof ListActs actions) {
-        return actions;
+      if (read instanceof ListActs) {
+        return (ListActs) read;
       } else {
         throw new Exception(
             String.format("The file %s does not contains a list of actions.",

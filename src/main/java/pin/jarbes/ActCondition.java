@@ -14,7 +14,8 @@ public class ActCondition extends Act {
   @Override
   public String execute(Variables variables) throws Exception {
     Object evaluated = variables.evaluate(expression.value);
-    if (evaluated instanceof Boolean result) {
+    if (evaluated instanceof Boolean) {
+      var result = (Boolean) evaluated;
       if (result) {
         if (goToIfTrue != null && !goToIfTrue.isEmpty()) {
           return goToIfTrue;

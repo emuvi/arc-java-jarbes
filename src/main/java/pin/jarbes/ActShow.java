@@ -10,7 +10,9 @@ public class ActShow extends Act {
 
   @Override
   public String execute(Variables variables) throws Exception {
-    if (variables.get("<hidden>") instanceof ListWindow hidden) {
+    var value = variables.get("<hidden>");
+    if (value instanceof ListWindow) {
+      var hidden = (ListWindow) value;
       for (Window window : hidden) {
         SwingUtilities.invokeLater(() -> {
           window.setVisible(true);

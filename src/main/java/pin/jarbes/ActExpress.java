@@ -12,8 +12,8 @@ public class ActExpress extends Act {
   @Override
   public String execute(Variables variables) throws Exception {
     Object evaluated = variables.evaluate(expression.value);
-    if (evaluated instanceof String result) {
-      return result;
+    if (evaluated instanceof String) {
+      return (String) evaluated;
     } else {
       return "<next>";
     }

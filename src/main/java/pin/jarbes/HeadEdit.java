@@ -125,27 +125,32 @@ public class HeadEdit {
     if (event == null) {
       return;
     }
-    if (event instanceof InsertedUndo inserted) {
+    if (event instanceof InsertedUndo) {
+      var inserted = (InsertedUndo) event;
       Act aux = model.get(inserted.index);
       model.remove(inserted.index);
       forRedo.addFirst(new InsertedRedo(inserted.index, aux));
-    } else if (event instanceof EditedUndo edited) {
+    } else if (event instanceof EditedUndo) {
+      var edited = (EditedUndo) event;
       Act aux = model.get(edited.index);
       model.set(edited.index, edited.value);
       forRedo.addFirst(new EditedRedo(edited.index, aux));
-    } else if (event instanceof DeletedUndo deleted) {
+    } else if (event instanceof DeletedUndo) {
+      var deleted = (DeletedUndo) event;
       for (int i = 0; i < deleted.indices.length; i++) {
         model.add(deleted.indices[i], deleted.values[i]);
       }
       list.setSelectedIndices(deleted.indices);
       forRedo.addFirst(new DeletedRedo(deleted.indices));
-    } else if (event instanceof MovedUpUndo movedUp) {
+    } else if (event instanceof MovedUpUndo) {
+      var movedUp = (MovedUpUndo) event;
       for (int i = movedUp.indices.length - 1; i >= 0; i--) {
         moveDown(movedUp.indices[i] - 1);
       }
       list.setSelectedIndices(movedUp.indices);
       forRedo.addFirst(new MovedUpRedo(movedUp.indices));
-    } else if (event instanceof MovedDownUndo movedDown) {
+    } else if (event instanceof MovedDownUndo) {
+      var movedDown = (MovedDownUndo) event;
       for (int i = 0; i < movedDown.indices.length; i++) {
         moveUp(movedDown.indices[i] + 1);
       }
@@ -159,22 +164,27 @@ public class HeadEdit {
     if (event == null) {
       return;
     }
-    if (event instanceof InsertedRedo inserted) {
+    if (event instanceof InsertedRedo) {
+      var inserted = (InsertedRedo) event;
       insert(inserted.index, inserted.value);
-    } else if (event instanceof EditedRedo edited) {
+    } else if (event instanceof EditedRedo) {
+      var edited = (EditedRedo) event;
       list.setSelectedIndex(edited.index);
       try {
         edit(edited.value);
       } catch (Exception e) {
         Utils.treat(e);
       }
-    } else if (event instanceof DeletedRedo deleted) {
+    } else if (event instanceof DeletedRedo) {
+      var deleted = (DeletedRedo) event;
       list.setSelectedIndices(deleted.indices);
       delete();
-    } else if (event instanceof MovedUpRedo movedUp) {
+    } else if (event instanceof MovedUpRedo) {
+      var movedUp = (MovedUpRedo) event;
       list.setSelectedIndices(movedUp.indices);
       moveUp();
-    } else if (event instanceof MovedDownRedo movedDown) {
+    } else if (event instanceof MovedDownRedo) {
+      var movedDown = (MovedDownRedo) event;
       list.setSelectedIndices(movedDown.indices);
       moveDown();
     }
@@ -200,34 +210,92 @@ public class HeadEdit {
     forRedo.clear();
   }
 
-  private record InsertedUndo(int index) {
+  private class InsertedUndo {
+    public int index;
+    
+    public InsertedUndo(int index) {
+      this.index = index;
+    }
   }
 
-  private record InsertedRedo(int index, Act value) {
+  private class InsertedRedo {
+    public int index;
+    public Act value;
+    
+    public InsertedRedo(int index, Act value) {
+      this.index = index;
+      this.value = value;
+    }
   }
 
-  private record EditedUndo(int index, Act value) {
+  private class EditedUndo {
+    public int index;
+    public Act value;
+    
+    public EditedUndo(int index, Act value) {
+      this.index = index;
+      this.value = value;
+    }
   }
 
-  private record EditedRedo(int index, Act value) {
+  private class EditedRedo {
+    public int index;
+    public Act value;
+    
+    public EditedRedo(int index, Act value) {
+      this.index = index;
+      this.value = value;
+    }
   }
 
-  private record DeletedUndo(int[] indices, Act[] values) {
+  private class DeletedUndo {
+    public int[] indices;
+    public Act[] values;
+    
+    public DeletedUndo(int[] indices, Act[] values) {
+      this.indices = indices;
+      this.values = values;
+    }
   }
 
-  private record DeletedRedo(int[] indices) {
+  private class DeletedRedo {
+    public int[] indices;
+    
+    public DeletedRedo(int[] indices) {
+      this.indices = indices;
+    }
   }
 
-  private record MovedUpUndo(int[] indices) {
+  private class MovedUpUndo {
+    public int[] indices;
+    
+    public MovedUpUndo(int[] indices) {
+      this.indices = indices;
+    }
   }
 
-  private record MovedUpRedo(int[] indices) {
+  private class MovedUpRedo {
+    public int[] indices;
+    
+    public MovedUpRedo(int[] indices) {
+      this.indices = indices;
+    }
   }
 
-  private record MovedDownUndo(int[] indices) {
+  private class MovedDownUndo {
+    public int[] indices;
+    
+    public MovedDownUndo(int[] indices) {
+      this.indices = indices;
+    }
   }
 
-  private record MovedDownRedo(int[] indices) {
+  private class MovedDownRedo {
+    public int[] indices;
+    
+    public MovedDownRedo(int[] indices) {
+      this.indices = indices;
+    }
   }
 
 }

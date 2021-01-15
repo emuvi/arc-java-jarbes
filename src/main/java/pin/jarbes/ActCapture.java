@@ -31,8 +31,8 @@ public class ActCapture extends Act {
     BufferedImage captured = Interact.capture(zone);
     Integer capturedCounter = 0;
     Object result = variables.get("<CapturedCounter>");
-    if (result instanceof Integer counter) {
-      capturedCounter = counter;
+    if (result instanceof Integer) {
+      capturedCounter = (Integer) result;
     }
     File saveIn = new File("captured");
     Files.createDirectories(saveIn.toPath());
