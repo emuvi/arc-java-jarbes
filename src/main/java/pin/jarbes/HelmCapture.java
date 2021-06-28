@@ -28,8 +28,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
-import pin.jarbox.Utils;
-import pin.jarbox.Variables;
+
+import pin.jarbox.bin.Variables;
+import pin.jarbox.wzd.WzdDesk;
+import pin.jarbox.wzd.WzdLog;
 
 public class HelmCapture {
 
@@ -89,12 +91,12 @@ public class HelmCapture {
     zoneButton.addActionListener(event -> copyZone());
     pictureButton.addActionListener(event -> copyPicture());
     updateSelected();
-    Utils.putShortCut(mainPanel, "CaptureChar", "C", () -> capture());
-    Utils.putShortCut(mainPanel, "Capture", "control C", () -> capture());
-    Utils.putShortCut(mainPanel, "Minimize", "M", () -> minimize());
-    Utils.putShortCut(mainPanel, "Copy Local", "L", () -> copyLocal());
-    Utils.putShortCut(mainPanel, "Copy Zone", "Z", () -> copyZone());
-    Utils.putShortCut(mainPanel, "Copy Picture", "P", () -> copyPicture());
+    WzdDesk.putShortCut(mainPanel, "CaptureChar", "C", () -> capture());
+    WzdDesk.putShortCut(mainPanel, "Capture", "control C", () -> capture());
+    WzdDesk.putShortCut(mainPanel, "Minimize", "M", () -> minimize());
+    WzdDesk.putShortCut(mainPanel, "Copy Local", "L", () -> copyLocal());
+    WzdDesk.putShortCut(mainPanel, "Copy Zone", "Z", () -> copyZone());
+    WzdDesk.putShortCut(mainPanel, "Copy Picture", "P", () -> copyPicture());
   }
 
   private void updateSelected() {
@@ -104,11 +106,11 @@ public class HelmCapture {
   }
 
   private void copyLocal() {
-    Utils.copyToClipboard(String.format("%d,%d", selectedX, selectedY));
+    WzdDesk.copyToClipboard(String.format("%d,%d", selectedX, selectedY));
   }
 
   private void copyZone() {
-    Utils.copyToClipboard(String.format("%d,%d,%d,%d", selectedX, selectedY,
+    WzdDesk.copyToClipboard(String.format("%d,%d,%d,%d", selectedX, selectedY,
           selectedWidth, selectedHeight));
   }
 
@@ -158,11 +160,11 @@ public class HelmCapture {
               captured = newCapture;
               refreshCaptured();
             } catch (Exception e) {
-              Utils.treat(e);
+              WzdLog.treat(e);
             }
           });
         } catch (Exception e) {
-          Utils.treat(e);
+          WzdLog.treat(e);
         }
       };
     }.start();

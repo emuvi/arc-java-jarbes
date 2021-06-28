@@ -17,9 +17,10 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JSeparator;
 import javax.swing.SwingUtilities;
-import pin.jarbox.HelmLogged;
-import pin.jarbox.Utils;
-import pin.jarbox.Variables;
+import pin.jarbox.dsk.HelmLogged;
+import pin.jarbox.wzd.WzdDesk;
+import pin.jarbox.wzd.WzdLog;
+import pin.jarbox.bin.Variables;
 
 public class HelmMain {
 
@@ -87,30 +88,30 @@ public class HelmMain {
   }
 
   private void initKeyShortcuts() {
-    Utils.putShortCut(panel, "MenuChar", "M", () -> showMenu());
-    Utils.putShortCut(panel, "MenuControlChar", "control M", () -> showMenu());
-    Utils.putShortCut(panel, "JarbesChar", "J", () -> menuJarbes());
-    Utils.putShortCut(panel, "JarbesControlChar", "control J",
+    WzdDesk.putShortCut(panel, "MenuChar", "M", () -> showMenu());
+    WzdDesk.putShortCut(panel, "MenuControlChar", "control M", () -> showMenu());
+    WzdDesk.putShortCut(panel, "JarbesChar", "J", () -> menuJarbes());
+    WzdDesk.putShortCut(panel, "JarbesControlChar", "control J",
         () -> menuJarbes());
-    Utils.putShortCut(panel, "ActionsChar", "A", () -> menuActions());
-    Utils.putShortCut(panel, "ActionsControlChar", "control A",
+    WzdDesk.putShortCut(panel, "ActionsChar", "A", () -> menuActions());
+    WzdDesk.putShortCut(panel, "ActionsControlChar", "control A",
         () -> menuActions());
-    Utils.putShortCut(panel, "StartStopChar", "S", () -> menuStartStop());
-    Utils.putShortCut(panel, "StartStopControlChar", "control S",
+    WzdDesk.putShortCut(panel, "StartStopChar", "S", () -> menuStartStop());
+    WzdDesk.putShortCut(panel, "StartStopControlChar", "control S",
         () -> menuStartStop());
-    Utils.putShortCut(panel, "PauseResumeChar", "E", () -> menuPauseResume());
-    Utils.putShortCut(panel, "PauseResumeControlChar", "control E",
+    WzdDesk.putShortCut(panel, "PauseResumeChar", "E", () -> menuPauseResume());
+    WzdDesk.putShortCut(panel, "PauseResumeControlChar", "control E",
         () -> menuPauseResume());
-    Utils.putShortCut(panel, "CaptureChar", "C", () -> menuCapture());
-    Utils.putShortCut(panel, "CaptureControlChar", "control C",
+    WzdDesk.putShortCut(panel, "CaptureChar", "C", () -> menuCapture());
+    WzdDesk.putShortCut(panel, "CaptureControlChar", "control C",
         () -> menuCapture());
-    Utils.putShortCut(panel, "LoggedChar", "L", () -> menuLogged());
-    Utils.putShortCut(panel, "LoggedControlChar", "control L",
+    WzdDesk.putShortCut(panel, "LoggedChar", "L", () -> menuLogged());
+    WzdDesk.putShortCut(panel, "LoggedControlChar", "control L",
         () -> menuLogged());
-    Utils.putShortCut(panel, "ExitChar", "X", () -> System.exit(0));
-    Utils.putShortCut(panel, "ExitControlChar", "control X",
+    WzdDesk.putShortCut(panel, "ExitChar", "X", () -> System.exit(0));
+    WzdDesk.putShortCut(panel, "ExitControlChar", "control X",
         () -> System.exit(0));
-    Utils.putShortCut(panel, "Exit", "ESCAPE", () -> System.exit(0));
+    WzdDesk.putShortCut(panel, "Exit", "ESCAPE", () -> System.exit(0));
   }
 
   public JFrame getWindow() { return window; }
@@ -172,7 +173,7 @@ public class HelmMain {
       Desktop.getDesktop().browse(
           new URI("http://www.pointel.com.br/apps/jarbes"));
     } catch (Exception e) {
-      Utils.treat(e);
+      WzdLog.treat(e);
     }
   }
 
@@ -196,7 +197,7 @@ public class HelmMain {
     try {
       new HelmEditor(this).loadAndShow(manager);
     } catch (Exception e) {
-      Utils.treat(e);
+      WzdLog.treat(e);
     }
   }
 
@@ -204,7 +205,7 @@ public class HelmMain {
     try {
       new HelmCapture().show();
     } catch (Exception e) {
-      Utils.treat(e);
+      WzdLog.treat(e);
     }
   }
 
@@ -212,7 +213,7 @@ public class HelmMain {
     try {
       new HelmLogged(window).show();
     } catch (Exception e) {
-      Utils.treat(e);
+      WzdLog.treat(e);
     }
   }
 
@@ -263,13 +264,13 @@ public class HelmMain {
         int index = 0;
         while (!stop) {
           if (index >= manager.size()) {
-            Utils.treat("Actions complete.");
+            WzdLog.treat("Actions complete.");
             break;
           }
           Act act = manager.get(index);
-          Utils.treat("Calling Act %d = %s", index, act.toString());
+          WzdLog.treat("Calling Act %d = %s", index, act.toString());
           String result = act.execute(variables);
-          Utils.treat("Act %d (%s) executed.", index, act.name);
+          WzdLog.treat("Act %d (%s) executed.", index, act.name);
           if (result == null || result.isBlank() || result.equals("<next>")) {
             index++;
           } else if (result.equals("<previous>")) {
@@ -301,14 +302,14 @@ public class HelmMain {
         }
       } catch (Exception e) {
         erros = true;
-        Utils.treat(e, true);
-        Utils.treat("Actions terminated.");
+        WzdLog.treat(e, true);
+        WzdLog.treat("Actions terminated.");
       } finally {
         try {
           new ActShow().execute(variables);
         } catch (Exception e) {
           erros = true;
-          Utils.treat(e, true);
+          WzdLog.treat(e, true);
         }
         SwingUtilities.invokeLater(() -> {
           stopped();

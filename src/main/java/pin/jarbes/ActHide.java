@@ -3,7 +3,7 @@ package pin.jarbes;
 import java.awt.Window;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
-import pin.jarbox.Variables;
+import pin.jarbox.bin.Variables;
 
 public class ActHide extends Act {
 

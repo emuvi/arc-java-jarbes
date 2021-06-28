@@ -1,8 +1,8 @@
 package pin.jarbes;
 
 import java.awt.event.KeyEvent;
-import pin.jarbox.Local;
-import pin.jarbox.Variables;
+import pin.jarbox.val.Local;
+import pin.jarbox.bin.Variables;
 
 public class ActClick extends Act {
 

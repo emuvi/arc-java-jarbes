@@ -1,7 +1,7 @@
 package pin.jarbes;
 
 import java.awt.event.KeyEvent;
-import pin.jarbox.Variables;
+import pin.jarbox.bin.Variables;
 
 public class ActType extends Act {
 

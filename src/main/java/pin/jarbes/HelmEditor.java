@@ -23,8 +23,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.TransferHandler;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import pin.jarbox.Icons;
-import pin.jarbox.Utils;
+import pin.jarbox.dsk.Icons;
+import pin.jarbox.wzd.WzdDesk;
+import pin.jarbox.wzd.WzdLog;
+
 
 public class HelmEditor {
 
@@ -111,48 +113,48 @@ public class HelmEditor {
   }
 
   private void initKeyShortcuts() {
-    Utils.putShortCut(mainPanel, "MenuNew", "control N", () -> menuNew());
-    Utils.putShortCut(mainPanel, "MenuOpen", "control O", () -> menuOpen());
-    Utils.putShortCut(mainPanel, "MenuSave", "control S", () -> menuSave());
-    Utils.putShortCut(mainPanel, "MenuCopyName", "control alt N",
+    WzdDesk.putShortCut(mainPanel, "MenuNew", "control N", () -> menuNew());
+    WzdDesk.putShortCut(mainPanel, "MenuOpen", "control O", () -> menuOpen());
+    WzdDesk.putShortCut(mainPanel, "MenuSave", "control S", () -> menuSave());
+    WzdDesk.putShortCut(mainPanel, "MenuCopyName", "control alt N",
         () -> copyName());
-    Utils.putShortCut(mainPanel, "MenuCopyIndex", "control alt I",
+    WzdDesk.putShortCut(mainPanel, "MenuCopyIndex", "control alt I",
         () -> copyIndex());
-    Utils.putShortCut(mainPanel, "MenuInsertChar", "I", () -> menuInsert());
-    Utils.putShortCut(mainPanel, "MenuInsertControlChar", "control I",
+    WzdDesk.putShortCut(mainPanel, "MenuInsertChar", "I", () -> menuInsert());
+    WzdDesk.putShortCut(mainPanel, "MenuInsertControlChar", "control I",
         () -> menuInsert());
-    Utils.putShortCut(mainPanel, "MenuInsert", "control INSERT",
+    WzdDesk.putShortCut(mainPanel, "MenuInsert", "control INSERT",
         () -> menuInsert());
-    Utils.putShortCut(mainPanel, "MenuEditChar", "E", () -> menuEdit());
-    Utils.putShortCut(mainPanel, "MenuEditControlChar", "control E",
+    WzdDesk.putShortCut(mainPanel, "MenuEditChar", "E", () -> menuEdit());
+    WzdDesk.putShortCut(mainPanel, "MenuEditControlChar", "control E",
         () -> menuEdit());
-    Utils.putShortCut(mainPanel, "MenuEditSpace", "SPACE", () -> menuEdit());
-    Utils.putShortCut(mainPanel, "MenuEdit", "control SPACE", () -> menuEdit());
-    Utils.putShortCut(mainPanel, "MenuDeleteChar", "D", () -> menuDelete());
-    Utils.putShortCut(mainPanel, "MenuDeleteControlChar", "control D",
+    WzdDesk.putShortCut(mainPanel, "MenuEditSpace", "SPACE", () -> menuEdit());
+    WzdDesk.putShortCut(mainPanel, "MenuEdit", "control SPACE", () -> menuEdit());
+    WzdDesk.putShortCut(mainPanel, "MenuDeleteChar", "D", () -> menuDelete());
+    WzdDesk.putShortCut(mainPanel, "MenuDeleteControlChar", "control D",
         () -> menuDelete());
-    Utils.putShortCut(mainPanel, "MenuDelete", "control DELETE",
+    WzdDesk.putShortCut(mainPanel, "MenuDelete", "control DELETE",
         () -> menuDelete());
-    Utils.putShortCut(mainPanel, "MenuListChar", "L",
+    WzdDesk.putShortCut(mainPanel, "MenuListChar", "L",
         () -> actionsList.requestFocus());
-    Utils.putShortCut(mainPanel, "MenuList", "control L",
+    WzdDesk.putShortCut(mainPanel, "MenuList", "control L",
         () -> actionsList.requestFocus());
-    Utils.putShortCut(mainPanel, "MenuFindChar", "F", () -> menuFind());
-    Utils.putShortCut(mainPanel, "MenuFind", "control F", () -> menuFind());
-    Utils.putShortCut(mainPanel, "MenuFindNextChar", "G", () -> findNext());
-    Utils.putShortCut(mainPanel, "MenuFindNextControlChar", "control G",
+    WzdDesk.putShortCut(mainPanel, "MenuFindChar", "F", () -> menuFind());
+    WzdDesk.putShortCut(mainPanel, "MenuFind", "control F", () -> menuFind());
+    WzdDesk.putShortCut(mainPanel, "MenuFindNextChar", "G", () -> findNext());
+    WzdDesk.putShortCut(mainPanel, "MenuFindNextControlChar", "control G",
         () -> findNext());
-    Utils.putShortCut(mainPanel, "MenuFindNext", "F3", () -> findNext());
-    Utils.putShortCut(mainPanel, "MenuUpChar", "U", () -> menuUp());
-    Utils.putShortCut(mainPanel, "MenuUp", "control alt UP", () -> menuUp());
-    Utils.putShortCut(mainPanel, "MenuDownChar", "O", () -> menuDown());
-    Utils.putShortCut(mainPanel, "MenuDown", "control alt DOWN",
+    WzdDesk.putShortCut(mainPanel, "MenuFindNext", "F3", () -> findNext());
+    WzdDesk.putShortCut(mainPanel, "MenuUpChar", "U", () -> menuUp());
+    WzdDesk.putShortCut(mainPanel, "MenuUp", "control alt UP", () -> menuUp());
+    WzdDesk.putShortCut(mainPanel, "MenuDownChar", "O", () -> menuDown());
+    WzdDesk.putShortCut(mainPanel, "MenuDown", "control alt DOWN",
         () -> menuDown());
-    Utils.putShortCut(mainPanel, "MenuUndoChar", "Z", () -> menuUndo());
-    Utils.putShortCut(mainPanel, "MenuUndo", "control Z", () -> menuUndo());
-    Utils.putShortCut(mainPanel, "MenuRedoChar", "R", () -> menuRedo());
-    Utils.putShortCut(mainPanel, "MenuRedo", "control R", () -> menuRedo());
-    Utils.putShortCut(mainPanel, "Close", "ESCAPE", () -> close());
+    WzdDesk.putShortCut(mainPanel, "MenuUndoChar", "Z", () -> menuUndo());
+    WzdDesk.putShortCut(mainPanel, "MenuUndo", "control Z", () -> menuUndo());
+    WzdDesk.putShortCut(mainPanel, "MenuRedoChar", "R", () -> menuRedo());
+    WzdDesk.putShortCut(mainPanel, "MenuRedo", "control R", () -> menuRedo());
+    WzdDesk.putShortCut(mainPanel, "Close", "ESCAPE", () -> close());
   }
 
   private void initMouseHandler() {
@@ -163,7 +165,7 @@ public class HelmEditor {
           if (e.isAltDown()) {
             Act selected = actionsList.getSelectedValue();
             if (selected != null) {
-              Utils.copyToClipboard(selected.name);
+              WzdDesk.copyToClipboard(selected.name);
             }
           } else {
             menuEdit();
@@ -200,14 +202,14 @@ public class HelmEditor {
   public void edit(Act act) throws Exception { editor.edit(act); }
 
   private void menuNew() {
-    if (Utils.question("Do you really wanna clear the actions?")) {
+    if (WzdDesk.question("Do you really wanna clear the actions?")) {
       editor.clear();
     }
   }
 
   private void menuOpen() {
     if (editor.hasChanges() &&
-        !Utils.question("The editor has changes, do you wanna continue?")) {
+        !WzdDesk.question("The editor has changes, do you wanna continue?")) {
       return;
         }
     if (chooser.showOpenDialog(window) == JFileChooser.APPROVE_OPTION) {
@@ -222,7 +224,7 @@ public class HelmEditor {
       actionsModel.addAll(actions);
       selected = file;
     } catch (Exception e) {
-      Utils.treat(e);
+      WzdLog.treat(e);
     }
   }
 
@@ -246,7 +248,7 @@ public class HelmEditor {
       chooser.setSelectedFile(selected);
       editor.savedChanges();
     } catch (Exception e) {
-      Utils.treat(e);
+      WzdLog.treat(e);
     }
   }
 
@@ -256,9 +258,9 @@ public class HelmEditor {
       if (index < 0) {
         throw new Exception("There's no item selected to copy the index.");
       }
-      Utils.copyToClipboard(index.toString());
+      WzdDesk.copyToClipboard(index.toString());
     } catch (Exception e) {
-      Utils.treat(e);
+      WzdLog.treat(e);
     }
   }
 
@@ -268,9 +270,9 @@ public class HelmEditor {
       if (selected == null) {
         throw new Exception("There's no item selected to copy the name.");
       }
-      Utils.copyToClipboard(selected.name);
+      WzdDesk.copyToClipboard(selected.name);
     } catch (Exception e) {
-      Utils.treat(e);
+      WzdLog.treat(e);
     }
   }
 
@@ -278,7 +280,7 @@ public class HelmEditor {
     try {
       new HelmInsert(this).show();
     } catch (Exception e) {
-      Utils.treat(e);
+      WzdLog.treat(e);
     }
   }
 
@@ -293,7 +295,7 @@ public class HelmEditor {
           .show();
       }
     } catch (Exception e) {
-      Utils.treat(e);
+      WzdLog.treat(e);
     }
   }
 
@@ -301,7 +303,7 @@ public class HelmEditor {
 
   private void menuFind() {
     var aux =
-      JOptionPane.showInputDialog(Utils.getActiveWindow(), "Find:", finding);
+      JOptionPane.showInputDialog(WzdDesk.getActiveWindow(), "Find:", finding);
     if (aux != null && !aux.isBlank()) {
       finding = aux.trim().toLowerCase();
       findNext();
@@ -349,7 +351,7 @@ public class HelmEditor {
 
   private void menuCancel() {
     if (editor.hasChanges() &&
-        !Utils.question("The editor has changes, do you wanna continue?")) {
+        !WzdDesk.question("The editor has changes, do you wanna continue?")) {
       return;
         }
     window.setVisible(false);

@@ -1,7 +1,7 @@
 package pin.jarbes;
 
-import pin.jarbox.Source;
-import pin.jarbox.Variables;
+import pin.jarbox.val.Source;
+import pin.jarbox.bin.Variables;
 
 public class ActExpress extends Act {
 

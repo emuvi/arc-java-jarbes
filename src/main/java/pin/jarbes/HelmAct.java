@@ -1,7 +1,8 @@
 package pin.jarbes;
 
-import pin.jarbox.HelmEdit;
-import pin.jarbox.Utils;
+import pin.jarbox.dsk.HelmEdit;
+import pin.jarbox.wzd.WzdLog;
+
 
 public abstract class HelmAct<T extends Act> extends HelmEdit<T> {
 
@@ -12,7 +13,7 @@ public abstract class HelmAct<T extends Act> extends HelmEdit<T> {
           owner.edit(value);
           return true;
         } catch (Exception e) {
-          Utils.treat(e);
+          WzdLog.treat(e);
           return false;
         }
       });

@@ -1,7 +1,8 @@
 package pin.jarbes;
 
-import pin.jarbox.Utils;
-import pin.jarbox.Variables;
+
+import pin.jarbox.bin.Variables;
+import pin.jarbox.wzd.WzdLog;
 
 public class ActLog extends Act {
 
@@ -17,7 +18,7 @@ public class ActLog extends Act {
     for (int i = 0; i < names.length; i++) {
       values[i] = variables.get(names[i]);
     }
-    Utils.treat(message, values);
+    WzdLog.treat(message, values);
     return null;
   }
 

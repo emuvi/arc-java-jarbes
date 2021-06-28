@@ -1,6 +1,6 @@
 package pin.jarbes;
 
-import pin.jarbox.Variables;
+import pin.jarbox.bin.Variables;
 
 public class ActGoTo extends Act {
 

@@ -2,7 +2,7 @@ package pin.jarbes;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
-import pin.jarbox.Variables;
+import pin.jarbox.bin.Variables;
 
 public abstract class Act implements Serializable {
 

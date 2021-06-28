@@ -6,9 +6,11 @@ import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
-import pin.jarbox.Local;
-import pin.jarbox.Utils;
-import pin.jarbox.Zone;
+import pin.jarbox.val.Local;
+
+import pin.jarbox.val.Zone;
+import pin.jarbox.wzd.WzdDesk;
+import pin.jarbox.wzd.WzdLog;
 
 public class Interact {
 
@@ -19,7 +21,7 @@ public class Interact {
       robot = new Robot();
       robot.setAutoDelay(180);
     } catch (Exception e) {
-      Utils.treat(e);
+      WzdLog.treat(e);
     }
   }
 
@@ -53,12 +55,12 @@ public class Interact {
       result = robot.createScreenCapture(
           new Rectangle(zone.x, zone.y, zone.width, zone.height));
     }
-    result = Utils.convertToRGB(result);
-    if (Utils.DEBUG) {
+    result = WzdDesk.convertToRGB(result);
+    if (WzdLog.DEBUG) {
       try {
         ImageIO.write(result, "bmp", new File("capture.bmp"));
       } catch (Exception e) {
-        Utils.treat(e, true);
+        WzdLog.treat(e, true);
       }
     }
     return result;

@@ -14,9 +14,10 @@ import javax.imageio.metadata.IIOInvalidTreeException;
 import javax.imageio.metadata.IIOMetadata;
 import javax.imageio.metadata.IIOMetadataNode;
 import javax.imageio.stream.ImageOutputStream;
-import pin.jarbox.Utils;
-import pin.jarbox.Variables;
-import pin.jarbox.Zone;
+
+import pin.jarbox.bin.Variables;
+import pin.jarbox.val.Zone;
+import pin.jarbox.wzd.WzdChars;
 
 
 public class ActCapture extends Act {
@@ -36,7 +37,7 @@ public class ActCapture extends Act {
     }
     File saveIn = new File("captured");
     Files.createDirectories(saveIn.toPath());
-    String name = Utils.fill(capturedCounter.toString(), '0', 4, true);
+    String name = WzdChars.fill(capturedCounter.toString(), '0', 4, true);
     File destiny = new File(saveIn, name + ".png");
     destiny.delete();
     saveImage(captured, destiny, dpi != null ? dpi : 300);

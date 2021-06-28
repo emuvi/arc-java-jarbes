@@ -4,7 +4,8 @@ import java.util.Deque;
 import java.util.LinkedList;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
-import pin.jarbox.Utils;
+import pin.jarbox.wzd.WzdLog;
+
 
 public class HeadEdit {
 
@@ -173,7 +174,7 @@ public class HeadEdit {
       try {
         edit(edited.value);
       } catch (Exception e) {
-        Utils.treat(e);
+        WzdLog.treat(e);
       }
     } else if (event instanceof DeletedRedo) {
       var deleted = (DeletedRedo) event;

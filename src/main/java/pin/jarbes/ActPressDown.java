@@ -2,7 +2,7 @@ package pin.jarbes;
 
 import java.awt.event.KeyEvent;
 import javax.swing.KeyStroke;
-import pin.jarbox.Variables;
+import pin.jarbox.bin.Variables;
 
 public class ActPressDown extends Act {
 

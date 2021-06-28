@@ -11,7 +11,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import pin.jarbox.Utils;
+import pin.jarbox.wzd.WzdDesk;
+import pin.jarbox.wzd.WzdLog;
+
 
 public class HelmInsert {
 
@@ -36,7 +38,7 @@ public class HelmInsert {
     window.setIconImage(
         ImageIO.read(HelmEditor.class.getResourceAsStream("jarbes.png")));
     window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    Utils.setNextLocationFor(window);
+    WzdDesk.setNextLocationFor(window);
     window.setResizable(false);
     window.setContentPane(mainPanel);
     mainPanel.add(typePanel);
@@ -48,7 +50,7 @@ public class HelmInsert {
     typePanel.add(typeField);
     namePanel.add(nameLabel);
     namePanel.add(nameField);
-    Utils.setWidthMinAsPreferredMax(nameLabel, typeLabel);
+    WzdDesk.setWidthMinAsPreferredMax(nameLabel, typeLabel);
     for (TypesAct actType : TypesAct.values()) {
       typeModel.addElement(actType);
     }
@@ -58,7 +60,7 @@ public class HelmInsert {
     cancelButton.addActionListener(event -> cancel());
     window.getRootPane().setDefaultButton(confirmButton);
     window.pack();
-    Utils.putShortCut(mainPanel, "Close", "ESCAPE", () -> cancel());
+    WzdDesk.putShortCut(mainPanel, "Close", "ESCAPE", () -> cancel());
   }
 
   public void show() { window.setVisible(true); }
@@ -71,7 +73,7 @@ public class HelmInsert {
       owner.insert(act);
       window.setVisible(false);
     } catch (Exception e) {
-      Utils.treat(e);
+      WzdLog.treat(e);
     }
   }
 
