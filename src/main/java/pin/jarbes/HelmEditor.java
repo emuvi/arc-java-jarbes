@@ -23,7 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.TransferHandler;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import pin.jarbox.dsk.Icons;
+import pin.jarbes.dsk.Icons;
 import pin.jarbox.wzd.WzdDesk;
 import pin.jarbox.wzd.WzdLog;
 

@@ -1,6 +1,6 @@
 package pin.jarbes;
 
-import pin.jarbox.dsk.HelmEdit;
+import pin.jarbes.dsk.HelmEdit;
 import pin.jarbox.wzd.WzdLog;
 
 
